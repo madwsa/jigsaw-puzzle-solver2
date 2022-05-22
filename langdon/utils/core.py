@@ -35,10 +35,11 @@ def show_config(file, config_type):
 
 
 def get_config_path():
-    if platform == "linux" or platform == "linux2":
-        config = '/home/hpc/iwi5/iwi5012h/dev/jigsaw-puzzle-solver/config/config.toml'
-    elif platform == "darwin":
-        config = '/Users/beantown/PycharmProjects/jigsaw-puzzle-solver/config/config_local.toml'
-    elif platform == "win32":
-        raise NotImplementedError
-    return config
+    # if platform == "linux" or platform == "linux2":
+    #     config = '/home/hpc/iwi5/iwi5012h/dev/jigsaw-puzzle-solver/config/config.toml'
+    # elif platform == "darwin":
+    #     config = '/Users/beantown/PycharmProjects/jigsaw-puzzle-solver/config/config_local.toml'
+    # elif platform == "win32":
+    #     raise NotImplementedError
+    # return config
+    return '/home/wsa/jigsaw-puzzle-solver/config/config_local.toml'

@@ -1,3 +1,8 @@
+from os import listdir, path
+from PIL import Image
+from os.path import isfile, join, splitext
+import pandas as pd
+
 def set_size(width, fraction=1, subplots=(1, 1)):
     """Set figure dimensions to avoid scaling in LaTeX.
 
@@ -48,7 +53,7 @@ def get_info(data_path):
     # For training
     #file_names_parts = [i.split("_") for i in file_names]
     # For test
-    file_names_parts = [i.split("_") for i in file_names_test]
+    file_names_parts = [i.split("_") for i in file_names]
 
     return pd.DataFrame.from_records(file_names_parts,columns=['writer_id', 'page_id','fragment_id'])
 
@@ -63,4 +68,4 @@ def get_filenames(train_path, test_path):
 def get_imgsize(train_filenames, test_filenames, train_path, test_path):
     train = [Image.open(train_path + '/' +f+ '.jpg', 'r').size for f in train_filenames]
     test = [Image.open(test_path + '/'+ f + '.jpg', 'r').size for f in test_filenames]
-    return train, testv
+    return train, test

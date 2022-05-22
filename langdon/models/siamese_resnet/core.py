@@ -44,7 +44,7 @@ class SiameseNetwork(pl.LightningModule):
             self.input_size = self.batch_size
 
         self.fc1 = nn.Sequential(
-            nn.Linear(self.input_size, 500),
+            nn.LazyLinear(500),
             nn.ReLU(inplace=True),
 
             nn.Linear(500, 500),
@@ -75,7 +75,6 @@ class SiameseNetwork(pl.LightningModule):
         acc = self.binary_acc(output, y)
         opt = self.optimizers()
         opt.zero_grad()
-        loss = self.compute_loss(batch)
         self.manual_backward(loss)
         opt.step()
         # self.log('train_loss', loss, prog_bar=False, logger=True, on_step=False, on_epoch=True)
@@ -189,6 +188,10 @@ class SiameseNetwork(pl.LightningModule):
             "optimizer": optimizer,
             "lr_scheduler": scheduler
         }
+    
+    @property
+    def automatic_optimization(self) -> bool:
+        return False
 
 
 def conv3x3(in_planes, out_planes, stride=1):
