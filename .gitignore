@@ -8,7 +8,9 @@ langdon/__pycache__/*
 langdon/models/__pycache__/*
 *.pyc
 *.pyo
-/results/
 /.ipynb_checkpoints/
 /conda-env/
 /.virtual_documents/
+
+# don't upload large checkpoint files
+*ckpt*
